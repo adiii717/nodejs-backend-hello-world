@@ -3,15 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const DEM_INFO=process.env.DEM_INFO || "Hello from nodejs backend application";
-const HOSTED_ON=process.env.HOSTED_ON || "EC2 Machine";
 const datetime = require('node-datetime');
 const dt = datetime.create();
 const DEMLOYMENT_DATE = dt.format('m/d/Y H:M:S');
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
+const dotenv=require('dotenv').config()
+console.log(dotenv)
+const DEM_INFO=process.env.DEM_INFO || "Hello from nodejs backend application";
+const HOSTED_ON=process.env.HOSTED_ON || "EC2 Machine";
 
 var app = express();
 
