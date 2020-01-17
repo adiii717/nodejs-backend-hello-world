@@ -6,7 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const DEM_INFO=process.env.DEM_INFO || "Hello from nodejs backend application"
+const DEM_INFO=process.env.DEM_INFO || "Hello from nodejs backend application";
+const HOSTED_ON=process.env.HOSTED_ON || "EC2 Machine";
 const datetime = require('node-datetime');
 const dt = datetime.create();
 const DEMLOYMENT_DATE = dt.format('m/d/Y H:M:S');
@@ -25,12 +26,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req,res){
-  res.status(200).send({error:false,deployment_date:DEMLOYMENT_DATE,message:DEM_INFO,node_version:NODE_MAJOR_VERSION});
+  res.status(200).send({error:false,hosted_on:HOSTED_ON,deployment_date:DEMLOYMENT_DATE,message:DEM_INFO,node_version:NODE_MAJOR_VERSION});
 });
 app.get('/version_test', function(req,res){
   if (NODE_MAJOR_VERSION < 12) {
     // Demo versioni test
-    res.status(200).send({error:true,deployment_date:DEMLOYMENT_DATE,message:"Hurray! Node Version is Supported",node_version:NODE_MAJOR_VERSION});
+    res.status(200).send({error:true,hosted_on:HOSTED_ON,deployment_date:DEMLOYMENT_DATE,message:"Hurray! Node Version is Supported",node_version:NODE_MAJOR_VERSION});
   }
   else{
     res.status(500).send({error:true,deployment_date:DEMLOYMENT_DATE,message:"Opps! Node Version is not Supported",node_version:NODE_MAJOR_VERSION});
