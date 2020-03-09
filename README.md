@@ -1,11 +1,10 @@
-# terraform-ec2-nodejs-deployment
-
+# Express-demo-nodejs-application 
 ![N|Solid](https://nodejs.org/static/images/logo.svg)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 
-Express Demo application with Docker
+Express Demo application with Docker and Terraform, Dot env generated at runtime from user-data in case of Ec2 deployment with Terraform.
 
 
 
