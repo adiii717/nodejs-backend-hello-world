@@ -13,6 +13,7 @@ const dotenv=require('dotenv').config()
 console.log(dotenv)
 const DEM_INFO=process.env.DEM_INFO || "Hello from nodejs backend application";
 const HOSTED_ON=process.env.HOSTED_ON || "EC2 Machine";
+const bodyParser = require('body-parser')
 
 var app = express();
 
@@ -25,6 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 
 app.get('/', function(req,res){
   res.status(200).send({error:false,hosted_on:HOSTED_ON,deployment_date:DEMLOYMENT_DATE,message:DEM_INFO,node_version:NODE_MAJOR_VERSION});
@@ -38,6 +42,10 @@ app.get('/version_test', function(req,res){
     res.status(500).send({error:true,deployment_date:DEMLOYMENT_DATE,message:"Opps! Node Version is not Supported",node_version:NODE_MAJOR_VERSION});
 
   }
+});
+app.get('/posttest', function(req, res){
+  console.log("posttest call received")
+  res.send(req.body);
 });
 app.use('/users', usersRouter);
 
