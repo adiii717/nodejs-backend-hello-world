@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: adiii717/demo-app:nodejs-demo-app
+  repository: adiii717/demo-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "nodejs-demo-app"
