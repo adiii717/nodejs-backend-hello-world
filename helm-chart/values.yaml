@@ -51,9 +51,9 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls: 
-   - secretName: chart-example-tls
+   - secretName: demo-tls.secret
      hosts:
-       - chart-example.local
+       - testget.staging.pethealthdata.ch
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
